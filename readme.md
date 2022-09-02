@@ -5,7 +5,7 @@ Code of my personal website that I created with Flask.
 ## Default Settings
 For default mode: 
 
-- There is no database. (After running main.py database will be created)
+- The database in project is only for my own purpose (You have to delete it before running main.py)
 
 - Author initialized as Gokay. You can change it in main.py file
 
@@ -18,6 +18,7 @@ Here is how to login as admin:
 http://127.0.0.1:5000 (or any local host)/admin_panel
 
 - for a default login:
+   - !IMPORTANT: First delete the database then run.
    - username: admin
    - password: admin123admin
    - you can change the username and password in the main.py / admin_panel method
