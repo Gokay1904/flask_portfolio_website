@@ -24,7 +24,7 @@ from forms import CreateDataPostForm, CreatePostForm, LoginForm, ContactForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://spbgmipamqjujj:1048f8d1dc2684214a8c02e5aee2fba71d039ce4ec583d3bc1c1ea5f4770e98f@ec2-52-49-120-150.eu-west-1.compute.amazonaws.com:5432/da17m3fqreit82"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///portfolioswebsite.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
