@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+
+
+{% block head %}
+
+{% endblock%}
+
+
+{%block content%}
+
+<script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+
+<div class="container p-4">
+  <form class="" action="{{ url_for('add_post') }}" method=post>
+
+    <h5>Admin Post Panel</h5>
+    <!-- name forms -->
+    <p>
+      {{ form.title.label }} <br>
+      {{ form.title(placeholder='Title') }}
+    </p>
+    <!-- email forms -->
+
+    <p>
+      {{ form.subtitle.label }} <br>
+      {{ form.subtitle(placeholder='Subtitle') }}
+    </p>
+
+    <p>
+      {{ form.body.label }} <br>
+      {{ ckeditor.create() }}
+
+    </p>
+    <!-- Subject of your request -->
+    <p>
+      {{ form.img_url.label }}<br>
+      {{form.img_url(placeholder='Img Url')}}
+    </p>
+    <!-- Submit button -->
+    <p>
+      {{ form.submit }}
+    </p>
+
+
+
+  </form>
+</div>
+{{ ckeditor.load(pkg_type="basic") }}
+
+
+</html>
+
+{%endblock%}

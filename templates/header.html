@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<header>
+  {% block nav%}
+  <nav id="header_nav" class="navbar navbar-expand-lg navbar-dark  ">
+    <a class="navbar-brand" href="{{url_for('home')}}">Gokay</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <a class="nav-link" href="{{url_for('home')}}">Home</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" data-bs-toggle="dropdown" aria-expanded="false">
+            Portfolios
+          </a>
+          <ul class="dropdown-menu bg-transparent" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{{url_for('dsPage')}}">Data Science</a></li>
+             <li class="dropdown-divider"></li>
+             <li> <a class="dropdown-item disabled">More is on way..</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('about')}}">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('showAllPosts')}}">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('contact')}}">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  {% endblock%}
+
+</header>
+
+
+
+
+</html>

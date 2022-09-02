@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends "base.html" %}
+
+{% block head %}
+{% endblock %}
+{%block content%}
+
+
+
+<div class="container p-4">
+  <form class="" action="{{ url_for('contact') }}" method=post>
+
+    <h5>Contact me</h5>
+    <!-- username forms -->
+    <p>
+      {{ form.name.label }} <br>
+      {{ form.name(placeholder='enter your name') }}
+    </p>
+    <!-- email forms -->
+    <p>
+      {{ form.message.label }} <br>
+      {{ form.message(placeholder='your message here') }}
+    </p>
+
+    <!-- Submit button -->
+    <p>
+      {{ form.submit }}
+    </p>
+
+
+
+
+  </form>
+</div>
+
+
+
+</html>
+
+{%endblock%}
+
+
+</html>

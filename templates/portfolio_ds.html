@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+
+{% block head %}
+<nav id="header_nav" class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{{url_for('home')}}">Gokay</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <a class="nav-link" href="{{url_for('home')}}">Home</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" data-bs-toggle="dropdown" aria-expanded="false">
+          Portfolios
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item " href="{{url_for('dsPage')}}">Data Science</a></li>
+          <li class="dropdown-divider"></li>
+          <li> <a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('about')}}">About</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Posts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock%}
+
+{% block content %}
+
+<div class="container ds-full-container">
+  {% if current_user.is_authenticated: %}
+  <div class="row ">
+    <div class="col"><a href="{{url_for('ds_add_post')}}" class="float-end"><i class="fa-solid fa-plus"></i> Add New</a> </div>
+  </div>
+  {%endif%}
+
+  <div class="row ">
+    {%for dsPost in dsPosts%}
+    <div class="col-bg-4 col-md-6 col col-sm-12">
+      <div class="ds-container">
+
+        {% if current_user.is_authenticated: %}
+        <a href="{{url_for('delete_ds_post', post_id = dsPost.id )}}" class="btn btn-light btn-sm float-end" role="button"><i class="fa-solid fa-circle-minus"></i></a> <a href="{{url_for('ds_edit')}}" class="edit float-end">Edit</a>
+        {%endif%}
+        <div class="row post-row bg-light">
+          <div class="col-5 ">
+
+
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+
+                {%for img in dsPost.imgs%}
+                <div class="carousel-item-{% if loop.counter1 == 1 %}active{% endif %}" data-interval="100">
+                  <img src="data:image/{{img.mimetype}};base64,{{img.data}}" class="d-block w-100" alt="No src">
+                  <img src="..." class="d-block w-100" alt="...">
+                  <div class="carousel-caption d-none d-md-block">
+
+                  </div>
+                </div>
+                {%endfor%}
+
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+              <form action="{{url_for('UploadImage',post_id = dsPost.id)}}" method="POST" ENCTYPE="multipart/form-data">
+                <input type="file" name="image" id="image">
+                <label for="image">Select Image...</label>
+                <button type="submit" class="btn btn-primary"></button>
+              </form>
+            </div>
+
+
+
+          </div>
+          <div class="col">
+            <h1 id="title">{{dsPost.title}} </h1>
+            <p id="author">{{dsPost.author}}</p>
+            <hr class="my-2">
+            <div class="row">
+              <p id="description"> {{dsPost.body}}
+            </div>
+            <div class="row row-ds-button float-end">
+              <button id="read-more" type="button" class="btn btn-dark ds-button shadow-none m-1">Read More</button>
+              <button id="read-code" type="button" class="btn btn-dark ds-button shadow-none m-1"><i class="fa-solid fa-code"></i> Code</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {%endfor%}
+  </div>
+</div>
+
+
+</div>
+</div>
+
+{%endblock %}
+
+
+
+
+</html>

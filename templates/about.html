@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+{%extends "base.html"%}
+
+{%block head%}
+
+{%endblock%}
+
+{%block content%}
+<div id="about-full-container" class="row ">
+
+  <div id="about-header" class="row">
+    <div class="d-flex justify-content-center align-items-center">
+      <p class="m-0">Here is my journey how it started and how it goes...</p>
+    </div>
+  </div>
+
+  <div id="total-container" class="container">
+    <div class="row align-items-center about-g-r ">
+
+      <div class="col-2 m-0 p-0 about-rc1">
+        <img class="about-m-icon" src="{{url_for('static',filename='icons/playtime.png')}}">
+      </div>
+      <div class="col-10 m-0 my-auto about-rc2">
+        <div class="d-flex justify-content-center align-items-center">
+          <p class="m-0 about-description-title">I started programming with Java in 2013 when I was 12.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="about-description-g-r" class="row align-items-center-g-r about-g-r ">
+      <div id="about-description-rc1" class="col-6 p-0 about-rc1  ">
+        <div class="row align-items-center  m-0 p-0 ">
+          <div class="row m-1 ">
+            <p class="m-0 text-start">Less than a year later, I grasped the basic concept of object-oriented programming on Eclipse environment.</p>
+          </div>
+          <div class="row m-1">
+            <p class="m-0 text-start">At 2014's I made basic interface designs in netbeans.</p>
+          </div>
+          <div class="row m-1">
+            <p class="m-0 text-start">After a short time I have worked with Canvas,Graphics JFrame libraries on Java.</p>
+          </div>
+          <div class="row m-1">
+            <p class="m-0 text-start">I learned data tools such as Json and Mysql.</p>
+          </div>
+        </div>
+
+      </div>
+      <div id="about-description-rc2" class="col-6 m-0 my-auto about-rc2">
+        <div class="container">
+          <img class="about-description-m-icon" src="{{url_for('static',filename='icons/walk.png')}}">
+          <i class="fa-solid fa-circle fa-xs"></i>
+          <i class="fa-solid fa-circle fa-xs"></i>
+          <i class="fa-solid fa-circle fa-xs"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center about-g-r ">
+
+      <div class="col-2 m-0 p-0 about-rc1">
+        <img class="about-m-icon" src="{{url_for('static',filename='icons/student.png')}}">
+      </div>
+      <div class="col-10 m-0 my-auto about-rc2">
+        <div class="d-flex justify-content-center align-items-center">
+          <p class="m-0 about-description-title">In my high school years, I turned to game development, which was my childhood dream.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="about-description-g-r2" class="row align-items-center-g-r about-g-r ">
+
+      <div class="col p-0 about-rc1">
+        <div class="row align-items-center  m-0 p-0 ">
+          <div class="row m-1 justify-content-center ">
+
+            <div class="row m-1 ">
+              <p class="m-0 text-center">I met the Unity game development engine in 2016. I had to choice one of C# or Javascript programming languages for game development.</p>
+            </div>
+            <div class="row m-1">
+              <p class="m-0 text-center">I chose C# and started developing in Visual Studio on one hand and Unity engine on the other.</p>
+            </div>
+            <div class="row m-1">
+              <p class="m-0 text-center">I have done many unfinished game projects. The first minigame project I completed was in 2019.</p>
+            </div>
+            <div class="row m-1">
+              <p class="m-0 text-center">I gained basic knowledge about html and css.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row m-1 justify-content-center">
+          <div id="carouselExampleSlidesOnly" class="carousel slide portfolio-game-slide" data-bs-ride="carousel">
+            <p class="m-0 game-slide-title">Schizoid</p>
+            <p class="m-0 game-slide-desc">First game jam I attended 2019 / ITU</p>
+            <div class="carousel-inner">
+              <div class="carousel-item active " data-bs-interval="4000">
+                <img class="d-block w-100 portfolio-game-slide-img" src="{{url_for('static',filename='images/ingame/schizoid1.png')}}" alt="First slide">
+              </div>
+              <div class="carousel-item" data-bs-interval="4000">
+                <img class="d-block w-100 portfolio-game-slide-img" src="{{url_for('static',filename='images/ingame/schizoid2.png')}}" alt="Second slide">
+              </div>
+
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+       <div class="row align-items-center about-g-r ">
+
+      <div class="col-2 m-0 p-0 about-rc1">
+        <img class="about-m-icon" src="{{url_for('static',filename='icons/adult.png')}}">
+      </div>
+      <div class="col-10 m-0 my-auto about-rc2">
+        <div class="d-flex justify-content-center align-items-center">
+          <p class="m-0 about-description-title">At the age of 20, in 2021, I joined my university's game developers community and made my first teamwork in 48-hour gamejams.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="about-description-g-r3" class="row align-items-center-g-r about-g-r ">
+      <div class="col-6 p-0 about-rc1  ">
+        <div class="row align-items-center  m-0 p-0 ">
+          <div class="row m-1 ">
+            <p class="m-0 text-start">I learned basics of Fortran and Python through courses at university.</p>
+          </div>
+          <div class="row m-1">
+            <p class="m-0 text-start">Python impressed me with its many advantages.</p>
+          </div>
+          <div class="row m-1">
+            <p class="m-0 text-start">So far, I have worked in libraries like</p>
+          </div>
+            <div class="row m-2">
+            <p class="m-0 text-start">Pandas</p>
+                <p class="m-0 text-start">Numpy</p>
+                <p class="m-0 text-start"> Matplotlib</p>
+                 <p class="m-0 text-start"> Tkinter</p>
+                 <p class="m-0 text-start"> Flask+Jinja</p>
+                 <p class="m-0 text-start"> Selenium</p>
+                 <p class="m-0 text-start"> Bs4</p>
+                <p class="m-0 text-start"> SQLAlchemy</p>
+                <p class="m-0 text-start"> Spotipy</p>
+                <p class="m-0 text-start"> Turtle</p>
+          </div>
+        </div>
+
+
+
+      </div>
+      <div  class="col-6 m-0 my-auto about-rc2">
+            <img class="about-m-pyicon" src="{{url_for('static',filename='icons/python.png')}}">
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+</div>
+</div>
+
+
+
+
+
+
+{%endblock%}
+
+
+
+
+</html>

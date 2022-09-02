@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends "base.html" %}
+
+{% block head %}
+<nav id="header_nav" class="navbar allposts-navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="{{url_for('home')}}">Gokay</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <a class="nav-link" href="{{url_for('home')}}">Home</a>
+      <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" data-bs-toggle="dropdown" aria-expanded="false">
+          Portfolios
+        </a>
+        <ul class="dropdown-menu allposts-navbar-dropdown-menu bg-transparent" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item " href="{{url_for('dsPage')}}">Data Science</a></li>
+          <li class="dropdown-divider"></li>
+          <li> <a class="dropdown-item disabled">More is on way..</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{url_for('showAllPosts')}}">Posts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+{%endblock%}
+
+
+
+{% block content %}
+
+
+<div class="allposts-full-container container-bg m-5">
+  <div class="row m-0">
+    {%for post in posts%}
+    <div class="col-bg-3 col-md-4 col-sm-6">
+      <div class="container allposts-container">
+        <div class="row">
+          <div class="d-flex">
+            <p class="allposts-id m-0">{%if post.id < 10%}0{%endif%}{{post.id}} </p>
+            <p class="allposts-author m-0 my-auto">{{post.author}} </p>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="allpost-info-row">
+            <a href="{{url_for('showPost',post_id=post.id)}}" class="allposts-title text-decoration-none">
+              <p class="m-0 p-0">{{post.title}}</p>
+            </a>
+            <p class="allposts-date m-0 p-0">{{post.date}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+</div>
+{%endblock%}
+
+
+</html>

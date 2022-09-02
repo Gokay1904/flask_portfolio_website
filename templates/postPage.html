@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en" style="background-color: #1B2430">
+{% extends "base.html" %}
+
+
+{% block head %}
+
+{% endblock%}
+
+
+{% block content %}
+
+
+<div class="row post-read-container m-0 ">
+
+
+  <div class="col-1 my-auto">
+
+    <div class="post-page-redirect-list">
+      <div class="row "><a href="{{url_for('home')}}" class=""> <i class="fa-solid fa-house-user  fa-2xs h-icon"></i> </a></div>
+      <div class="row"><a href="#" class=""><i class="fa-solid fa-note-sticky fa-2xs h-icon"></i></a></div>
+    </div>
+
+  </div>
+
+  <div class="col-11 post-read-col my-auto m-0 p-0">
+
+      <p class="text-start blog-date"> {{post.date}} </p>
+      <p class="text-start blog-author"> by {{post.author}} </p>
+
+      <h1 class="text-start blog-title">{{post.title}}</h1>
+      <hr>
+      <p class="text-start blog-body">{{post.body|safe}} </p>
+  </div>
+
+</div>
+
+{%endblock %}
+
+
+</html>

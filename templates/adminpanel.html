@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+
+
+{% block head %}
+
+{% endblock%}
+
+
+{%block content%}
+
+
+
+<div class="container p-4">
+  <form class="" action="{{ url_for('admin_panel') }}" method=post>
+
+    <h5>Admin Login Panel</h5>
+    <!-- username forms -->
+    <p>
+      {{ form.username.label }} <br>
+      {{ form.username(placeholder='username') }}
+    </p>
+    <!-- email forms -->
+    <p>
+      {{ form.password.label }} <br>
+      {{ form.password(placeholder='password') }}
+    </p>
+
+    <!-- Submit button -->
+    <p>
+      {{ form.submit }}
+    </p>
+
+    {% if current_user.is_authenticated: %}
+    Hi {{ current_user.username }}!
+    {% endif %}
+
+
+
+
+  </form>
+</div>
+
+
+
+</html>
+
+{%endblock%}
