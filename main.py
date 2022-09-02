@@ -1,9 +1,12 @@
+from plistlib import Data
+
 from dominate.svg import use
 from flask import Flask, render_template, redirect, url_for, flash,request, send_from_directory,Response , abort
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor, upload_success, upload_fail
 import datetime
 import os
+import psycopg2
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
@@ -24,7 +27,13 @@ from forms import CreateDataPostForm, CreatePostForm, LoginForm, ContactForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///portfolioswebsite.db")
+
+DATABASE_URL = os.environ['DATABASE_URL']
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(DATABASE_URL)
+
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
