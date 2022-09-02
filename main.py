@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, url_for, flash,request, send
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor, upload_success, upload_fail
 import datetime
+import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
@@ -22,8 +23,8 @@ from forms import CreateDataPostForm, CreatePostForm, LoginForm, ContactForm
 #https://colorhunt.co/palette/6e85b7b2c8dfc4d7e0f8f9d7 PALETTE
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///portfolioswebsite.db'
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL",  "sqlite:///portfoliowebsite.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -222,8 +223,8 @@ def admin_panel():
     form = LoginForm()
 
     if (not User.query.filter_by(id =1).first()):
-        admin_user = User(username="admin",
-                      password=generate_password_hash("admin123admin", method='pbkdf2:sha256', salt_length=8))
+        admin_user = User(username="gokay1904",
+                          password=generate_password_hash("adgmina123!", method='pbkdf2:sha256', salt_length=8))
         db.session.add(admin_user)
         db.session.commit()
 
