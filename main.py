@@ -1,5 +1,3 @@
-from plistlib import Data
-
 from dominate.svg import use
 from flask import Flask, render_template, redirect, url_for, flash,request, send_from_directory,Response , abort
 from flask_bootstrap import Bootstrap5
@@ -28,11 +26,9 @@ from forms import CreateDataPostForm, CreatePostForm, LoginForm, ContactForm
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 
-DATABASE_URL = os.environ['DATABASE_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(DATABASE_URL)
-
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+#conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -44,15 +40,6 @@ bootstrap = Bootstrap5(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-
-
-smtp_server = "smtp.gmail.com"
-port = 587  # For starttls
-
-# Create a secure SSL context
-context = ssl.create_default_context()
-
-
 
 
 class User(UserMixin,db.Model):
