@@ -23,8 +23,8 @@ from forms import CreateDataPostForm, CreatePostForm, LoginForm, ContactForm
 #https://colorhunt.co/palette/6e85b7b2c8dfc4d7e0f8f9d7 PALETTE
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "8BYkEfBA6O6donzWlSihBXox7C0sKR6b"
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///portfolioswebsite.db"
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///portfolioswebsite.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
