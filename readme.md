@@ -5,7 +5,7 @@ Code of my personal website that I created with Flask.
 ## Default Settings
 For default mode: 
 
-- There is no database. (After running main.py database will be created)
+- The database in project is only for my own purpose (You have to delete it before running main.py)
 
 - Author initialized as Gokay. You can change it in main.py file
 
