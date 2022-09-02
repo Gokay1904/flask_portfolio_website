@@ -18,7 +18,7 @@ Here is how to login as admin:
 http://127.0.0.1:5000 (or any local host)/admin_panel
 
 - for a default login:
-   !IMPORTANT: First delete the database then run.
+   - !IMPORTANT: First delete the database then run.
    - username: admin
    - password: admin123admin
    - you can change the username and password in the main.py / admin_panel method
