@@ -213,7 +213,7 @@ def admin_panel():
     form = LoginForm()
 
     if (not User.query.filter_by(id =1).first()):
-        admin_user = User(username="admina",password = generate_password_hash("admin123admin", method='pbkdf2:sha256', salt_length=8))
+        admin_user = User(username="admin",password = generate_password_hash("admin123admin", method='pbkdf2:sha256', salt_length=8))
         db.session.add(admin_user)
         db.session.commit()
 
