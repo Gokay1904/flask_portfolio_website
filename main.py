@@ -28,7 +28,7 @@ ckeditor = CKEditor(app)
 bootstrap = Bootstrap5(app)
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL",'sqlite:///portfolioswebsite.db')
 #conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -285,3 +285,6 @@ def logout():
     logout_user()
     return redirect(url_for("home"))
 
+
+if (__name__ == "__main__"):
+    app.run()
