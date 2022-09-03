@@ -3,7 +3,6 @@ from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor, upload_success, upload_fail
 import datetime
 import os
-import psycopg2
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
@@ -23,18 +22,17 @@ from forms import CreateDataPostForm, CreatePostForm, LoginForm, ContactForm
 #https://colorhunt.co/palette/6e85b7b2c8dfc4d7e0f8f9d7 PALETTE
 
 app = Flask(__name__)
-
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
+ckeditor = CKEditor(app)
+bootstrap = Bootstrap5(app)
 
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
+#conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
-
-ckeditor = CKEditor(app)
-
-bootstrap = Bootstrap5(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -73,8 +71,6 @@ class Img(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey('dspost.id'), unique=False, nullable=False)
     mimetype = db.Column(db.Text, nullable=False)
     name =  db.Column(db.Text, nullable = False)
-
-
 
 
 db.create_all()
@@ -217,8 +213,7 @@ def admin_panel():
     form = LoginForm()
 
     if (not User.query.filter_by(id =1).first()):
-        admin_user = User(username="admina",
-                          password=generate_password_hash("admin123admin", method='pbkdf2:sha256', salt_length=8))
+        admin_user = User(username="admina",password = generate_password_hash("admin123admin", method='pbkdf2:sha256', salt_length=8))
         db.session.add(admin_user)
         db.session.commit()
 
@@ -289,3 +284,4 @@ def load_user(user_id):
 def logout():
     logout_user()
     return redirect(url_for("home"))
+
