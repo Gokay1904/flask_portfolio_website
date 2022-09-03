@@ -1,4 +1,3 @@
-from dominate.svg import use
 from flask import Flask, render_template, redirect, url_for, flash,request, send_from_directory,Response , abort
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor, upload_success, upload_fail
