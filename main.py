@@ -290,7 +290,3 @@ def load_user(user_id):
 def logout():
     logout_user()
     return redirect(url_for("home"))
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
