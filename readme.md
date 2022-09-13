@@ -21,4 +21,4 @@ http://127.0.0.1:5000 (or any local host)/admin_panel
    - username: admin
    - password: admin123admin 
    - you can change the username and password in the main.py / admin_panel method
-   - you have to delete the database if any, to do that.
+   - you have to delete the database to do that.
